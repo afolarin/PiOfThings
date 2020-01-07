@@ -6,7 +6,7 @@ Pi Settings
 -----------
 Increase the memory available to the GPU from 128 to 256 on the pi configuration>>performance [memory]
 
-*Tip*: to exit camera preview use Ctrl+Alt+t to get a focus of the terminal (hidden behind the preview, which you can then exit, ctrl+D or pkill python )
+*Tip*: If you want a continuous camera preview it is unfortunately not exitable. To exit camera preview use `Ctrl+Alt+t` to get a new active terminal (hidden behind the preview, which you can then blindly type `pkill python3` or similar to kill the preview)
 
 Pi Camera CLI
 -------------
@@ -33,19 +33,19 @@ Python PiCamera package
 -----------------------
 *docs* https://picamera.readthedocs.io/en/release-1.13/
 
-set resolution max (2592x1944) 
-https://projects.raspberrypi.org/en/projects/getting-started-with-picamera/8
+- Set resolution max (2592x1944) 
+https://projects.raspberrypi.org/en/projects/getting-started-with-picamera/8 .
 Note framerate of 15 caveat...
 
-consistent exposure image sequence (esp. for timeseries)
+- Consistent exposure image sequence (esp. for timeseries)
 https://picamera.readthedocs.io/en/release-1.13/recipes1.html#capturing-consistent-images
 
-low lighting settings (needs tweaking)
+- Low lighting settings (needs tweaking)
 https://picamera.readthedocs.io/en/release-1.13/recipes1.html#capturing-in-low-light
 
-Various methods for image series capture
-https://picamera.readthedocs.io/en/release-1.13/recipes1.html#capturing-timelapse-sequences
-https://projects.raspberrypi.org/en/projects/cress-egg-heads
+- Various methods for image series capture
+  - https://picamera.readthedocs.io/en/release-1.13/recipes1.html#capturing-timelapse-sequences
+  - https://projects.raspberrypi.org/en/projects/cress-egg-heads
 
 
 using avconv for timelapse sequence video collation
@@ -54,9 +54,9 @@ https://projects.raspberrypi.org/en/projects/cress-egg-heads/10
 ```sh
 avconv -r 10 -i image%04d.jpg -r 10 -vcodec libx264 -crf 20 -g 15 timelapse.mp4
 ```
-this uses zero padded numbers.
+this uses zero prefix padded numbers.
 
-To create a timelapse with non-zero prefixed padding image numbered files
+To create a timelapse with non-zero prefix padded numbered files
 i.e. 1,2,3...300 rather than 0001,0002,...300.respectively image%00d.jpg rather than obased image%03d.jpg)
 ```sh
 avconv -r 10 -i cat-spy_%00d.jpg -r 10 -vcodec libx264 -crf 20 -g 15 timelapse.mp4
@@ -65,17 +65,18 @@ avconv -r 10 -i cat-spy_%00d.jpg -r 10 -vcodec libx264 -crf 20 -g 15 timelapse.m
 Composite Image generation
 --------------------------
 Using Python PIL (pillow) package to generate a Composite Image
-https://pythontic.com/image-processing/pillow/alpha-composite
+https://pythontic.com/image-processing/pillow/alpha-composite.
+
 PIL Image class provides two options here (see above link) blend() and alpha_composite()
 [see here:](composite-img/pil-composite.py)
 
 Using ImageMagick 
-Composite Func
+- Composite Func
 https://imagemagick.org/script/composite.php
-Blend Func
+- Blend Func
 https://imagemagick.org/script/command-line-options.php#blend
 
-Playback (video .h256)
+Playback (raw video .h256)
 --------
 raw video format player
 playing on pi3 .h256 raw video  (on pi4 the vlc works but not pi3)
