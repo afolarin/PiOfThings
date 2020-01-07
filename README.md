@@ -16,13 +16,13 @@ raspistill --imxfx colourswap -t 60000 --rotation 270
 raspistill --imxfx none --exposure nightpreview -t 60000 --rotation 270
 ```
 
-#grab a still
+Grab a still
 -------------
 ```sh
 raspistill -o Desktop/image.jpg
 ```
 
-grab a raw video
+Grab a raw video
 ----------------
 ```sh
 raspivid -o Desktop/video.h264
@@ -48,7 +48,7 @@ https://picamera.readthedocs.io/en/release-1.13/recipes1.html#capturing-in-low-l
   - https://projects.raspberrypi.org/en/projects/cress-egg-heads
 
 
-using avconv for timelapse sequence video collation
+Using avconv for timelapse sequence video collation
 ---------------------------------------------------
 https://projects.raspberrypi.org/en/projects/cress-egg-heads/10
 ```sh
